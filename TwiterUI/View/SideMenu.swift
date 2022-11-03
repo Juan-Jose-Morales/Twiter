@@ -22,10 +22,10 @@ struct SideMenu: View {
                     .frame(width: 65, height: 65)
                     .clipShape(Circle())
                 
-                Text("Juan Jose Morales")
+                Text("Dead Pool")
                     .font(.title2.bold())
                 
-                Text("@Juan_JoseMorales")
+                Text("@Mr_DeadPool")
                     .font(.callout)
                 
                 HStack(spacing: 12){
@@ -37,7 +37,7 @@ struct SideMenu: View {
                         Label{
                             Text("Followers")
                         } icon: {
-                            Text("1.2M")
+                            Text("9.2M")
                                 .fontWeight(.bold)
                         }
                         
@@ -59,6 +59,7 @@ struct SideMenu: View {
             .foregroundColor(.primary)
             .padding(.horizontal)
             .padding(.leading)
+            .padding(.bottom)
             
             ScrollView(.vertical, showsIndicators: false ){
                 
@@ -92,7 +93,7 @@ struct SideMenu: View {
                 
                 Divider()
                 
-                VStack(alignment: .leading, spacing: 15){
+                VStack(alignment: .leading, spacing: 45){
                     
                     Button("Settings And Privacy"){
                         
@@ -101,9 +102,48 @@ struct SideMenu: View {
                         
                     }
                 }
+                .padding()
+                .padding(.leading)
+                .padding(.bottom)
+                .frame(maxWidth: .infinity,alignment: .leading)
+                .foregroundColor(.primary)
+            }
+            
+            VStack(spacing: 0){
+                
+                Divider()
+                
+                HStack{
+                    
+                    Button {
+                        
+                        
+                    } label: {
+                        Image("Light")
+                            .resizable()
+                            .renderingMode(.template)
+                            .aspectRatio( contentMode: .fill)
+                            .frame(width: 22,height:22)
+                    }
+                    Spacer()
+                    
+                    Button {
+                        
+                        
+                    } label: {
+                        Image("QR")
+                            .resizable()
+                            .renderingMode(.template)
+                            .aspectRatio( contentMode: .fill)
+                            .frame(width: 22,height:22)
+                    }
+                    
+                    .padding([.horizontal,.top],15)
+                    .foregroundColor(.primary)
+                }
             }
         }
-        .padding(.vertical)
+        .padding(.top)
         .frame(maxWidth: .infinity,alignment: .leading)
         .frame(width: getRect().width - 90)
         .frame(maxHeight: .infinity)
@@ -119,9 +159,12 @@ struct SideMenu: View {
     func TapButton(title: String,image: String)->some View{
         
         
-        Button{
+        NavigationLink {
             
+            Text("\(title) View")
+                .navigationTitle(title)
         } label: {
+            
             HStack(spacing: 13){
                 Image(image)
                     .resizable()
